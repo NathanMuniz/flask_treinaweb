@@ -1,12 +1,11 @@
+from flask import render_template
+
 from app import app
 
 @app.route('/ola', defaults={'nome': None}, methods={"POST", "GET"})
 @app.route('/ola/<string:nome>')
 def ola(nome):
-    if nome:
-        return f'olá, {nome}'
-    else:
-        return f'Olá, usuario'
+    return render_template("clientes/teste.html", nome_usuario=nome)
 
 @app.route('/')
 def home():
